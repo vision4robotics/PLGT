@@ -20,9 +20,9 @@
 
 邮箱: changhongfu@tongji.edu.cn
 
-# Demonstration running instructions
+# 运行指令示例
 
-### Requirements
+### 运行环境需求
 
 1.Python 3.7.10
 
@@ -32,25 +32,20 @@
 
 5.cuda 11.3.1
 
->Download the package, extract it and follow two steps:
+>下载并提取代码，接下来按以下步骤执行:
 >
->1. Put test images in data/test_data/, put training data in data/train_data/.
+>1. 将测试图片放入 data/test_data/, 将训练图片放入 data/train_data/.
 >
->2. For testing, run:
+>2. 为测试该方法，需运行:
 >
 >     ```
 >     python lowlight_test.py
 >     ```
->     You can find the enhanced images in data/result/. Some examples have been put in this folder.
+>     你可以在 data/result/ 中找到测试结果。
 >   
->3. For training, run:
+>3. 为训练该方法，需运行:
 >
 >     ```
 >     python lowlight_train.py
 >     ```
 
-
-
-# Acknowledgements
-
-We sincerely thank the contribution of `Chongyi Li` for his previous work Zero-DCE (https://github.com/Li-Chongyi/Zero-DCE).
