@@ -1,16 +1,16 @@
-# 基于在线逐像素伽马变换的自适应无人机图像增强
+# Adaptive UAV Image Enhancer Based on Online Pixel-Level Gamma Transform
 
-
-该项目包含PLGT的代码。
+This project contains the code of PLGT.
 
 # 摘要
-无人机的智能化应用往往离不开视觉目标跟踪，但是诸多研究指出：在黑夜条件下最前沿的视觉跟踪器性能亦会大幅下降。另外，主流基于Siamese神经网络的视觉跟踪器在初始化阶段通常需要人工标注跟踪目标，而黑夜条件下人工初始化目标标注的精度亦会大幅降低。因此，夜间视觉目标跟踪严重限制无人机智能化应用与发展。既然在初始化目标标注阶段和后续跟踪阶段，光照条件良好的图像均必不可少，为何不利用图像增强技术将低照度图像增强为符合人眼特性的理想照度图像呢？
 
-近年来，图像增强方法与神经网络的结合已经成为研究的主流。但是大部分研究都仅立足于摄影领域痛点，一方面忽略无人机复杂动态场景下的特有诸多挑战，另一方面前沿图像增强方法复杂且参数庞大，导致无法在无人机机载平台上实现高精度、强鲁棒的实时应用。为解决这些问题，本文提出一种基于逐像素伽马变换的自适应图像增强方法（Adaptive Image Enhancer with Pixel-Level Gamma Transform, PLGT）。
+Intelligent applications of unmanned aerial vehicle (UAV) often requires accurate vision-based object tracking. However, many studies have shown that the tracking performance of state-of-the-art (SOTA) trackers is decreased significantly in dark conditions. Moreover, the leading-edge Siamese trackers require manual object selection during initialization. However, the precision of manual object initialization is also decreased greatly under low-light conditions. The nighttime object tracking has limited the intelligent applications and development of UAV. Since the images with ideal illumination conditions are essential in the initial selection stage and the subsequent tracking stage, why not use enhancers to enhance low-light images which are ideal for human eyes?
 
-在无人机复杂动态场景下，伽马变换作为一种传统增强方法，具有鲁棒性差的问题。因此， PLGT提出一种复合神经网络。具体地，其卷积神经网络分支利用局部信息生成增幅蒙版，实现像素级差异化增强，从而有效应对夜间无人机复杂动态场景下人造光源多、目标尺寸小等显著性挑战。此外，Transformer分支利用全局光照信息动态调节网络参数，以有效应对无人机复杂动态场景下光照快速变化等挑战。PLGT亦针对在夜间无人机上实际应用问题进行专门优化设计。具体地，其通过引入深度可分离卷积（Depthwise Seperable Convolution, DSC）和降采样过程，分别优化卷积神经网络分支和Transformer分支运算效率。PLGT亦提出一种软截断函数以解决暗部噪点过度增强问题。另外，PLGT包含一组精心设计的无参考损失函数，可利用不成对数据集进行训练，以节省搜集成对数据集所需巨大成本。
+In recent years, the combination of traditional image enhancement methods and neural networks has become mainstream studies. However, most of these methods are designed for photography applications. On the one hand, the challenges of UAV applictions are ignored. On the other hand, these methods with complex algorithms can hardly be processed in real-time on UAV platforms. To address these problems, this thesis proposes an adaptive image enhancer with pixel-level Gamma transform, i.e., PLGT.
 
-为验证PLGT在人工初始化目标标注的实用性，本文在经典低照度图像基准数据集上与其他前沿增强方法进行对比，证明PLGT在提升人眼感知特性方面的优势。此外，本文在公开黑夜无人机跟踪数据集UAVDark135上，将PLGT作为多种前沿视觉跟踪器的预处理算法，证明其即插即用的通用性。在同一数据集下，本文亦验证PLGT相较于其他增强方法在视觉目标跟踪方面的优势。最后，本文在一个典型无人机平台上进行实际测试，测试结果表明PLGT可以有效帮助无人机视觉跟踪器在夜间实现高精度、强鲁棒的实时目标跟踪。
+Gamma transform, as a traditional enhancement method,  is of poor robustness in complex and dynamic UAV conditions. Therefore, PLGT proposes a novel composite network. Convolutional neural network (CNN) branch processes the local information to generate a range mask, which can realize pixel-level enhancement and effectively cope with the nighttime UAV challenges such as artificial light sources and small target size. Transformer branch uses the global illumination information to dynamically adjust network parameters, thereby coping with illumination variation. PLGT is also specifically optimized for practical UAV applications in nighttime situations. To improve the computation efficiency of CNN branch and Transformer branch in PLGT, depthwise seperatable convolution and downsampling are employed, respectively. A soft truncation function is propesed to avoid over-enhancement of dark area noise. In addition, PLGT includes a set of well-designed non-reference loss functions to realize unsupervised training and save the cost of collecting paired datasets.
+
+To verify the practicality of PLGT in the initial manuel selection stage, this thesis compares PLGT with other cutting-edge image enhancers on image enhancement benchmarks to prove the advantages of PLGT in improving human perception. This thesis applies PLGT as a preprocessing stage for multiple leading-edge trackers in the nighttime UAV tracking benchmark, i.e., UAVDark135, to prove its universality of “plug and play”. Moreover, this thesis compares PLGT with other state-of-the-art image enhancers on UAVDark135 to verify its advantage in the UAV tracking stage. Finally, in a real-world test on a typical UAV platform, PLGT helps the tracker achieve real-time stable tracking at night. This thesis evaluates the proposed approach on a typical UAV platform, the results show that PLGT helps vision-based UAV trackers at night to achieve accurate, robust, and real-time tracking.
 
 ![image](https://github.com/haolindong/images_store/blob/main/plgt.png)
 
