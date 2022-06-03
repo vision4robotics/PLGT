@@ -2,7 +2,7 @@
 
 This project contains the code of PLGT.
 
-# 摘要
+# Abstract
 
 Intelligent applications of unmanned aerial vehicle (UAV) often requires accurate vision-based object tracking. However, many studies have shown that the tracking performance of state-of-the-art (SOTA) trackers is decreased significantly in dark conditions. Moreover, the leading-edge Siamese trackers require manual object selection during initialization. However, the precision of manual object initialization is also decreased greatly under low-light conditions. The nighttime object tracking has limited the intelligent applications and development of UAV. Since the images with ideal illumination conditions are essential in the initial selection stage and the subsequent tracking stage, why not use enhancers to enhance low-light images which are ideal for human eyes?
 
